@@ -20,46 +20,46 @@ resource "random_pet" "suffix" {
 }
 
 module "resource_group" {
-  source   = "git::https://github.com/yourorg/azure.git//azure_modules/resource_group?ref=main"
+  source   = "https://github.com/gitgirish123/azureterra/tree/main/terraform_modules/resource_group"
   name     = var.resource_group_name
   location = var.location
 }
 
 module "vnet" {
-  source              = "git::https://github.com/yourorg/azure.git//azure_modules/vnet?ref=main"
+  source              = "https://github.com/gitgirish123/azureterra/tree/main/terraform_modules/vnet"
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
   address_space       = var.address_space
 }
 
 module "dns" {
-  source              = "git::https://github.com/yourorg/azure.git//azure_modules/dns?ref=main"
+  source              = "https://github.com/gitgirish123/azureterra/tree/main/terraform_modules/dns"
   resource_group_name = module.resource_group.name
   zone_name           = var.dns_zone_name
 }
 
 module "cdn" {
-  source              = "git::https://github.com/yourorg/azure.git//azure_modules/cdn?ref=main"
+  source              = "https://github.com/gitgirish123/azureterra/tree/main/terraform_modules/cdn"
   resource_group_name = module.resource_group.name
   origin_id           = module.blob_storage.id
 }
 
 module "api_management" {
-  source              = "git::https://github.com/yourorg/azure.git//azure_modules/api_management?ref=main"
+  source              = "https://github.com/gitgirish123/azureterra/tree/main/terraform_modules/api_management"
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
   sku_name            = var.apim_sku_name
 }
 
 module "load_balancer" {
-  source              = "git::https://github.com/yourorg/azure.git//azure_modules/load_balancer?ref=main"
+  source              = "https://github.com/gitgirish123/azureterra/tree/main/terraform_modules/load_balancer"
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
   vnet_id             = module.vnet.id
 }
 
 module "virtual_machine" {
-  source              = "git::https://github.com/yourorg/azure.git//azure_modules/virtual_machine?ref=main"
+  source              = "https://github.com/gitgirish123/azureterra/tree/main/terraform_modules/virtual_machine"
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
   subnet_id           = module.vnet.subnet_ids[0]
@@ -67,50 +67,50 @@ module "virtual_machine" {
 }
 
 module "static_web_app" {
-  source              = "git::https://github.com/yourorg/azure.git//azure_modules/static_web_app?ref=main"
+  source              = "https://github.com/gitgirish123/azureterra/tree/main/terraform_modules/static_web_app"
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
   name                = var.static_web_app_name
 }
 
 module "blob_storage" {
-  source              = "git::https://github.com/yourorg/azure.git//azure_modules/blob_storage?ref=main"
+  source              = "https://github.com/gitgirish123/azureterra/tree/main/terraform_modules/blob_storage"
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
 }
 
 module "key_vault" {
-  source              = "git::https://github.com/yourorg/azure.git//azure_modules/key_vault?ref=main"
+  source              = "https://github.com/gitgirish123/azureterra/tree/main/terraform_modules/key_vault"
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
 }
 
 module "key_vault_certificates" {
-  source              = "git::https://github.com/yourorg/azure.git//azure_modules/key_vault_certificate?ref=main"
+  source              = "https://github.com/gitgirish123/azureterra/tree/main/terraform_modules/key_vault_certificates"
   key_vault_id        = module.key_vault.id
   certificates        = var.certificates
 }
 
 module "key_vault_keys" {
-  source              = "git::https://github.com/yourorg/azure.git//azure_modules/key_vault_key?ref=main"
+  source              = "https://github.com/gitgirish123/azureterra/tree/main/terraform_modules/key_vault_keys"
   key_vault_id        = module.key_vault.id
   keys                = var.keys
 }
 
 module "service_bus" {
-  source              = "git::https://github.com/yourorg/azure.git//azure_modules/service_bus?ref=main"
+  source              = "https://github.com/gitgirish123/azureterra/tree/main/terraform_modules/service_bus"
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
 }
 
 module "event_grid" {
-  source              = "git::https://github.com/yourorg/azure.git//azure_modules/event_grid?ref=main"
+  source              = "https://github.com/gitgirish123/azureterra/tree/main/terraform_modules/event_grid"
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
 }
 
 module "postgresql" {
-  source              = "git::https://github.com/yourorg/azure.git//azure_modules/postgresql?ref=main"
+  source              = "https://github.com/gitgirish123/azureterra/tree/main/terraform_modules/postgresql"
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
   admin_username      = var.postgres_admin_username
@@ -118,14 +118,14 @@ module "postgresql" {
 }
 
 module "redis_cache" {
-  source              = "git::https://github.com/yourorg/azure.git//azure_modules/redis?ref=main"
+  source              = "https://github.com/gitgirish123/azureterra/tree/main/terraform_modules/redis_cache"
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
   capacity            = var.redis_capacity
 }
 
 module "monitor" {
-  source              = "git::https://github.com/yourorg/azure.git//azure_modules/monitor?ref=main"
+  source              = "https://github.com/gitgirish123/azureterra/tree/main/terraform_modules/monitor"
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
 }
