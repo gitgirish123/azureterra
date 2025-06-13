@@ -79,11 +79,17 @@ module "blob_storage" {
   location            = module.resource_group.location
 }
 
+data "azurerm_client_config" "current" {}
+
 module "key_vault" {
   source              = "git::https://github.com/gitgirish123/azureterra.git//terraform_modules/key_vault?ref=main"
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
+  name                = "my-keyvault-${random_pet.suffix.id}"   
+  tenant_id           = data.azurerm_client_config.current.tenant_id
+  sku_name            = "standard"                              
 }
+
 
 module "key_vault_certificates" {
   source              = "git::https://github.com/gitgirish123/azureterra.git//terraform_modules/key_vault_certificates?ref=main"
