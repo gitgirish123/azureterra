@@ -76,3 +76,96 @@ variable "redis_capacity" {
   type        = number
   default     = 2
 }
+variable "apim_publisher_name" {
+  description = "The name of the API Management publisher."
+  type        = string
+}
+
+variable "apim_publisher_email" {
+  description = "The email of the API Management publisher."
+  type        = string
+}
+
+variable "event_grid_topic_name" {
+  description = "The name of the Event Grid Topic."
+  type        = string
+}
+
+variable "servicebus_namespace_name" {
+  description = "The name of the Service Bus Namespace."
+  type        = string
+}
+
+variable "servicebus_sku" {
+  description = "The SKU for the Service Bus Namespace (e.g., Basic, Standard, Premium)."
+  type        = string
+  default     = "Standard"
+}
+
+variable "redis_sku_name" {
+  description = "The SKU name for Redis (e.g., Basic, Standard, Premium)."
+  type        = string
+  default     = "Standard"
+}
+
+variable "redis_family" {
+  description = "The SKU family (C for Basic/Standard, P for Premium)."
+  type        = string
+  default     = "C"
+}
+variable "vm_size" {
+  description = "The size of the VM (e.g., Standard_B1s)."
+  type        = string
+}
+
+variable "vm_admin_username" {
+  description = "Admin username for the VM."
+  type        = string
+}
+
+variable "vm_admin_password" {
+  description = "Admin password for the VM (Windows only)."
+  type        = string
+  sensitive   = true
+}
+
+variable "blob_storage_account_name" {
+  description = "Globally unique name for the storage account."
+  type        = string
+}
+
+variable "blob_storage_account_tier" {
+  description = "The tier of the storage account. (Standard or Premium)"
+  type        = string
+  default     = "Standard"
+}
+
+variable "blob_storage_account_replication_type" {
+  description = "The replication type for the storage account. (LRS, GRS, etc.)"
+  type        = string
+  default     = "LRS"
+}
+
+variable "postgresql_server_name" {
+  description = "The name of the PostgreSQL server."
+  type        = string
+}
+
+variable "postgresql_sku_name" {
+  description = "The SKU name for the PostgreSQL server (e.g., GP_Standard_D2s_v3)."
+  type        = string
+}
+
+variable "postgresql_storage_mb" {
+  description = "The storage size in MB for the PostgreSQL server."
+  type        = number
+}
+
+variable "postgresql_version" {
+  description = "The version of PostgreSQL to use (e.g., 13, 14, 15)."
+  type        = string
+}
+variable "vnet_name" {
+  description = "The name of the Azure Virtual Network."
+  type        = string
+}

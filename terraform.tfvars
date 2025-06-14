@@ -33,3 +33,26 @@ postgres_admin_username = "pgadmin"
 postgres_admin_password = "SuperSecretPassword123!"
 
 redis_capacity = 2
+
+apim_publisher_name  = "Your Company Name"
+apim_publisher_email = "admin@example.com"
+
+event_grid_topic_name = "my-event-grid-topic"
+servicebus_namespace_name = "my-servicebus-namespace"
+servicebus_sku           = "Standard"
+
+redis_sku_name = "Standard"
+redis_family   = "C"
+
+vm_size             = "Standard_B1s"
+vm_admin_username  = "azureuser"
+vm_admin_password  = "P@ssw0rd123!"  # For Windows; omit for Linux
+
+postgresql_server_name   = "girish-postgres"
+postgresql_sku_name      = "GP_Standard_D2s_v3"
+postgresql_storage_mb    = 5120
+postgresql_version       = "15"
+
+blob_storage_account_name = "girishstorageaccount"
+
+vnet_name = "girish-vnet"
