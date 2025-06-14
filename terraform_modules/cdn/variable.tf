@@ -11,8 +11,3 @@ variable "origin_host_header" {
   type        = string
   description = "Host header for CDN origin."
 }
-variable "origin_host_header" {
-  type        = string
-  description = "The host header for the CDN origin."
-}
-
