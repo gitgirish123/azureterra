@@ -1,3 +1,3 @@
-#output "endpoint" {
- # value = azurerm_cdn_endpoint.this.host_name
-#}
+output "endpoint" {
+  value = azurerm_cdn_endpoint.this.host_name
+}
