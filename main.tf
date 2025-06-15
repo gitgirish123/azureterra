@@ -30,7 +30,7 @@ module "vnet" {
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
   address_space       = var.address_space
-  name                = var.vnet_name   # <-- Add this line
+  name                = var.vnet_name   
 }
 
 
@@ -69,8 +69,7 @@ module "load_balancer" {
   source              = "git::https://github.com/gitgirish123/azureterra.git//terraform_modules/load_balancer?ref=main"
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
-  public_ip_id        = azurerm_public_ip.lb.id     # <-- ADD THIS LINE
-  # vnet_id           = module.vnet.id             # <-- REMOVE THIS LINE
+  public_ip_id        = azurerm_public_ip.lb.id    
 }
 
 
@@ -78,10 +77,10 @@ module "virtual_machine" {
   source              = "git::https://github.com/gitgirish123/azureterra.git//terraform_modules/virtual_machine?ref=main"
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
-  nic_id              = module.network_interface.nic_id  # <-- Add this (see step 2)
-  vm_size             = var.vm_size                      # e.g., "Standard_B1s"
-  admin_username      = var.vm_admin_username            # e.g., "azureuser"
-  admin_password      = var.vm_admin_password            # <-- For Windows VMs
+  nic_id              = module.network_interface.nic_id  
+  vm_size             = var.vm_size                      
+  admin_username      = var.vm_admin_username            
+  admin_password      = var.vm_admin_password           
 }
 
 
@@ -148,10 +147,10 @@ module "postgresql" {
   source              = "git::https://github.com/gitgirish123/azureterra.git//terraform_modules/postgresql?ref=main"
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
-  name                = var.postgresql_server_name         # Add this line
-  sku_name            = var.postgresql_sku_name            # Add this line
-  storage_mb          = var.postgresql_storage_mb           # Add this line
-  postgres_version    = var.postgresql_version              # Add this line
+  name                = var.postgresql_server_name         
+  sku_name            = var.postgresql_sku_name            
+  storage_mb          = var.postgresql_storage_mb           
+  postgres_version    = var.postgresql_version              
   admin_username      = var.postgres_admin_username
   admin_password      = var.postgres_admin_password
 }
@@ -161,10 +160,10 @@ module "redis_cache" {
   source              = "git::https://github.com/gitgirish123/azureterra.git//terraform_modules/redis_cache?ref=main"
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
-  name                = "my-redis-${random_pet.suffix.id}"  # Globally unique name
-  sku_name            = var.redis_sku_name                  # e.g., "Premium"
-  family              = var.redis_family                    # e.g., "P" for Premium
-  capacity            = var.redis_capacity                  # e.g., 1 (for Basic/Standard) or 2+ (for Premium)
+  name                = "my-redis-${random_pet.suffix.id}"  
+  sku_name            = var.redis_sku_name                  
+  family              = var.redis_family                    
+  capacity            = var.redis_capacity                  
 }
 
 
@@ -182,6 +181,5 @@ module "network_interface" {
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
   subnet_id           = module.vnet.subnet_ids[0]
-  name                = "my-nic-${random_pet.suffix.id}" # <-- Add this line
-  # Add any other required variables for your NIC module here
+  name                = "my-nic-${random_pet.suffix.id}" 
 }
