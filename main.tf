@@ -182,5 +182,6 @@ module "network_interface" {
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location
   subnet_id           = module.vnet.subnet_ids[0]
+  name                = "my-nic-${random_pet.suffix.id}" # <-- Add this line
   # Add any other required variables for your NIC module here
 }

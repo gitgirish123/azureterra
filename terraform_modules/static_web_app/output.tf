@@ -1,4 +1,3 @@
-
-output "default_host_name" {
-  value = azurerm_static_web_app.this.default_host_name
+output "static_web_app_url" {
+  value = module.static_web_app.default_host_name 
 }
