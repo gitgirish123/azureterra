@@ -169,3 +169,8 @@ variable "vnet_name" {
   description = "The name of the Azure Virtual Network."
   type        = string
 }
+
+variable "subscription_id" {
+  description = "The Azure Subscription ID to use for the provider."
+  type        = string
+}

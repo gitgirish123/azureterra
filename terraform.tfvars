@@ -46,7 +46,7 @@ redis_family   = "C"
 
 vm_size             = "Standard_B1s"
 vm_admin_username  = "azureuser"
-vm_admin_password  = "P@ssw0rd123!"  # For Windows; omit for Linux
+vm_admin_password  = "P@ssw0rd123!"
 
 postgresql_server_name   = "girish-postgres"
 postgresql_sku_name      = "GP_Standard_D2s_v3"
@@ -56,3 +56,4 @@ postgresql_version       = "15"
 blob_storage_account_name = "girishstorageaccount"
 
 vnet_name = "girish-vnet"
+subscription_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
