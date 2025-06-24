@@ -92,6 +92,10 @@ module "static_web_app" {
   name                = var.static_web_app_name
 }
 
+output "static_web_app" {
+  value = module.static_web_app.static_web_app_url
+}
+
 module "blob_storage" {
   source                   = "git::https://github.com/gitgirish123/azureterra.git//terraform_modules/blob_storage?ref=main"
   resource_group_name      = module.resource_group.name
